@@ -1,0 +1,208 @@
+:root {
+    --effect: hover 3s linear infinite;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    align-items: center;
+    justify-content: center;
+}
+
+#wrapper {
+    width: 900px;
+    margin: 0 auto;
+    border: 10px solid black;
+    background-color: rgba(255, 255, 255, 0.7); 
+    padding: 40px; 
+    box-shadow: 0px 10px 15px; 
+    text-align: center;
+}
+
+div {
+    text-align: center;
+}
+
+h1 {
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 4em;
+    font-family: arial;
+    font-weight: 600;
+    transform: scale(0.5);
+    color: #121212;
+    -webkit-text-stroke: 2px gray;
+}
+
+h1:nth-child(1) {
+    animation: var(--effect);
+}
+
+h1:nth-child(2) {
+    animation: var(--effect) 0.125s;
+}
+
+h1:nth-child(3) {
+    animation: var(--effect) 0.25s;
+}
+
+h1:nth-child(4) {
+    animation: var(--effect) 0.375s;
+}
+
+h1:nth-child(5) {
+    animation: var(--effect) 0.5s;
+}
+
+h1:nth-child(6) {
+    animation: var(--effect) 0.675s;
+}
+
+h1:nth-child(7) {
+    animation: var(--effect) 0.75s;
+}
+
+h1:nth-child(8) {
+    animation: var(--effect) 0.875s;
+}
+
+h1:nth-child(9) {
+    animation: var(--effect) 0.875s;
+}
+
+h1:nth-child(10) {
+    animation: var(--effect) 1s;
+}
+
+h1:nth-child(11) {
+    animation: var(--effect) 1.125s;
+}
+
+h1:nth-child(12) {
+    animation: var(--effect) 1.25s;
+}
+
+h1:nth-child(13) {
+    animation: var(--effect) 1.375s;
+}
+
+h1:nth-child(14) {
+    animation: var(--effect) 1.5s;
+}
+
+@keyframes hover {
+    0% {
+        transform: scale(0.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+
+    20% {
+        transform: scale(1);
+        color: pink;
+        -webkit-text-stroke: 3px red;
+        filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 3px red) drop-shadow(0 0 5px red) hue-rotate(10turn);
+    }
+
+    50% {
+        transform: scale(0.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+}
+
+.earth {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+}
+
+.earth img {
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+}
+
+.moon-container {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+}
+
+.moon {
+    animation: spin 20s linear infinite;
+    background: none;
+    height: 50px;
+    pointer-events: none;
+    transform-origin: 25px;
+    width: 50px;
+}
+
+.moon img {
+    height: 50px;
+    transform: translateX(-160px) translateY(-160px);
+    width: 50px;
+}
+
+.earth img,
+.moon img {
+    border-radius: 50%;
+    box-shadow: 0 0 12em 1em rgba(110, 140, 200, .6);
+}
+
+.earth img,
+.moon img {
+    border-radius: 50%;
+    box-shadow: 0 0 12em 1em rgba(110, 140, 200, .6);
+}
+
+@keyframes spin {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.gradient-btn {
+    height: 4rem;
+    width: 12rem;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
+    background: linear-gradient(45deg, #02ab10, #1b0277);
+    color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+.gradient-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #02ab10, #1b0277);
+    color: white;
+    z-index: -1;
+    filter: blur(0px);
+    transition: 0.5s ease;
+}
+
+.gradient-btn:hover::after {
+    filter: blur(15px);
+}
