@@ -1,0 +1,17 @@
+/*
+ * pacman.c
+ *
+ * Created: 06/05/2023 01:43:26 p. m.
+ * Author: KOKAS
+ */
+
+#include <mega328p.h>
+
+void main(void)
+{
+while (1)
+    {
+    // Please write your application code here
+
+    }
+}

@@ -1,0 +1,4 @@
+main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"pacman.c" LINE:89
+SetupLCD DSTACK_USAGE:13 DSTACK_LEVEL:13 FILE:"..\..\..\inc\display.h" LINE:30
+WriteComandLCD DSTACK_USAGE:3 DSTACK_LEVEL:16 FILE:"..\..\..\inc\display.h" LINE:86
+SendDataBitsLCD DSTACK_USAGE:2 DSTACK_LEVEL:18 FILE:"..\..\..\inc\display.h" LINE:66

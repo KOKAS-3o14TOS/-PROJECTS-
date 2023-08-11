@@ -1,0 +1,37 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+pacOpen                                                                           0x0300       8
+pacClosed                                                                         0x0308       8
+pacOpenL                                                                          0x0310       8
+pacClosedL                                                                        0x0318       8
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+cursor                                                                            R4           1
+closed                                                                            R3           1
+open                                                                              R6           1
+closedL                                                                           R5           1
+openL                                                                             R8           1
+line                                                                              R7           1
+i                                                                                 R10          1
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+SetupLCD                                                                          0x00095     41
+PulseEn                                                                           0x000BE      3
+SendDataBitsLCD                                                                   0x000C1     23
+WriteComandLCD                                                                    0x000D8      5
+CharLCD                                                                           0x000DD     27
+StringLCD                                                                         0x000F8     20
+MoveCursor                                                                        0x0010C     36
+CreateChar                                                                        0x00130     26
+read_adc                                                                          0x0014A     29
+DelayPacMan                                                                       0x00167      5
+main                                                                              0x0016C     86
