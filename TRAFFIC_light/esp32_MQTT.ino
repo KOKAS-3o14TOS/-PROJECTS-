@@ -1,3 +1,4 @@
+// We include the libraries
 #include <WiFi.h>
 #include <PubSubClient.h>
 
@@ -9,7 +10,7 @@ const char* password = "password";
 // Add mosquitto MQTT Broker IP address
 const char* mqtt_server = "192.168.1.7";
 
-//Define
+//Define constants and variables for use
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
@@ -87,7 +88,7 @@ void callback(char* topic, byte* message, unsigned int length) {
   }
   Serial.println();
 
-  // If a message is received on the topic esp32/LED, you check if the message is either "on" or "off". 
+  // If a message is received on the topic esp32/green#, you check if the message is either "on" or "off". 
   // Changes the output state according to the message
   if (String(topic) == "esp32/green1") {
     Serial.print("Changing LED to ");
@@ -179,8 +180,10 @@ void loop() {
   if (now - lastMsg > 5000) {
     lastMsg = now;
 
-    
+
+    // We prepare the data and conditions to send    
     if (digitalRead(sw1) == 0){
+      // send data
       client.publish("esp32/alarm1", "on");
       while (digitalRead(sw1) == 0);
       client.publish("esp32/alarm1", "off");
@@ -204,17 +207,5 @@ void loop() {
       client.publish("esp32/alarm4", "off");
     }
     
-
-    /*
-    //Preparingn data to send
-    num++;
-    if (num>100) num=0;   
-    
-    // Convert the value to a char array
-    char numString[8];
-    dtostrf(num, 1, 2, numString);
-    Serial.println("Sending message on topic: esp32/num");
-    client.publish("esp32/num", numString);
-    */
   }
 }
