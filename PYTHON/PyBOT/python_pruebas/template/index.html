@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Detection</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Video Streaming</title>
+</head>
+<body>
+    <h1>Live Video Streaming</h1>
+    <div id="trackbars">
+        <label for="SERVO">SERVO:</label>
+        <input type="range" id="SERVO" name="H" min="0" max="145" value="{{ SERVO }}">
+        <span id="SERVO_value">{{ SERVO }}</span>
+        <br>
+        <label for="H">H:</label>
+        <input type="range" id="H" name="H" min="0" max="255" value="{{ H }}">
+        <span id="H_value">{{ H }}</span>
+        <br>
+        <label for="S">S:</label>
+        <input type="range" id="S" name="S" min="0" max="255" value="{{ S }}">
+        <span id="S_value">{{ S }}</span>
+        <br>
+        <label for="V">V:</label>
+        <input type="range" id="V" name="V" min="0" max="255" value="{{ V }}">
+        <span id="V_value">{{ V }}</span>
+        <br>
+        <label for="H2">H2:</label>
+        <input type="range" id="H2" name="H2" min="0" max="255" value="{{ H2 }}">
+        <span id="H2_value">{{ H2 }}</span>
+        <br>
+        <label for="S2">S2:</label>
+        <input type="range" id="S2" name="S2" min="0" max="255" value="{{ S2 }}">
+        <span id="S2_value">{{ S2 }}</span>
+        <br>
+        <label for="V2">V2:</label>
+        <input type="range" id="V2" name="V2" min="0" max="255" value="{{ V2 }}">
+        <span id="V2_value">{{ V2 }}</span>
+    </div>
+    <div>
+        <img id="video_feed" src="{{ url_for('video_feed') }}" alt="Video Feed">
+    </div>
+    <script>
+            // Function to update value display
+    function updateValue(elementId) {
+        var value = document.getElementById(elementId).value;
+        document.getElementById(elementId + '_value').textContent = value;
+    }
+
+    // Attach event listeners to range inputs
+    var rangeInputs = document.querySelectorAll('input[type="range"]');
+    rangeInputs.forEach(function(input) {
+        input.addEventListener('input', function() {
+            updateValue(this.id);
+        });
+    });
+
+    // Initial update of values
+    rangeInputs.forEach(function(input) {
+        updateValue(input.id);
+    });
+        $(document).ready(function() {
+            $('input[type="range"]').on('input', function() {
+                var data = {
+                    'H': $('#H').val(),
+                    'S': $('#S').val(),
+                    'V': $('#V').val(),
+                    'H2': $('#H2').val(),
+                    'S2': $('#S2').val(),
+                    'V2': $('#V2').val(),
+                    'SERVO': $('#SERVO').val(),
+                };
+                $.ajax({
+                    url: '/update_hsv',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
